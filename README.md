@@ -1,3 +1,6 @@
+
+Welcome to your Finish Inbox. The purpose of the application is to use GAE with GmailAPI and TranslateAPI. It takes your unread English emails and translates them to Finish, then saves them into a MySQL DB in CloudSQL
+
 - In Spring IDE     
 - Import this maven project into SpringIDE/EclipseIDE  
  
