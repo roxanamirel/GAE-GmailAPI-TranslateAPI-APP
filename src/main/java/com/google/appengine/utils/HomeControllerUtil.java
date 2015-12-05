@@ -46,17 +46,28 @@ public class HomeControllerUtil {
 	public static List<Message> getUnreadEmails(Gmail service) throws IOException {
 		List<Message> unreadEmails = new ArrayList<Message>();
 		ListMessagesResponse emails = service.users().messages().list(ConfigParameters.AUTHENTICATED_USER)
-				.setQ(ConfigParameters.QUERY_PARAM).execute();
-		while (emails.getMessages() != null) {
-			unreadEmails.addAll(emails.getMessages());
-			if (emails.getNextPageToken() != null) {
-				String pageToken = emails.getNextPageToken();
-				emails = service.users().messages().list(ConfigParameters.AUTHENTICATED_USER)
-						.setQ(ConfigParameters.QUERY_PARAM).setPageToken(pageToken).execute();
-			} else {
-				break;
-			}
+				.setQ(ConfigParameters.QUERY_PARAM).setMaxResults(new Long(3)).execute();
+		unreadEmails.addAll(emails.getMessages());
+		if (emails.getNextPageToken() != null) {
+			String pageToken = emails.getNextPageToken();
+			emails = service.users().messages().list(ConfigParameters.AUTHENTICATED_USER)
+					.setQ(ConfigParameters.QUERY_PARAM).setPageToken(pageToken).setMaxResults(new Long(3)).execute();
+			
+		
 		}
+		
+//		while (emails.getMessages() != null) {
+//			unreadEmails.addAll(emails.getMessages());
+//			if (emails.getNextPageToken() != null) {
+//				String pageToken = emails.getNextPageToken();
+//				emails = service.users().messages().list(ConfigParameters.AUTHENTICATED_USER)
+//						.setQ(ConfigParameters.QUERY_PARAM).setPageToken(pageToken).setMaxResults(new Long(1)).execute();
+//				
+//			
+//			} else {
+//				break;
+//			}
+//		}
 		return unreadEmails;
 	}
 

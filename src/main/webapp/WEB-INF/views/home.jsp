@@ -21,8 +21,10 @@
 
 		<p>Welcome to your Finish Inbox. The purpose of the application is
 			to use GAE with GmailAPI and TranslateAPI. It takes your unread
-			English emails and translates them to Finish, then saves them into a
-			MySQL DB in CloudSQL</p>
+			English emails using GmailAPI and translates them to Finish using TranslateAPI,
+			 then saves them into a MySQL DB in CloudSQL. 
+			 If you can't see them and the application did not request for 
+			 permission to read your emails, please refresh the page</p>
 		<h3>These are your unread emails and their translation to FINISH
 		</h3>
 
@@ -42,7 +44,7 @@
 
 		</table>
 
-		<h3>These emails have been stored in the DB</h3>
+		<h3>These emails are read from the DB. They will be deleted from the db when you refresh the page.</h3>
 
 		<table style="width: 80%; border-spacing: 0;"
 			class="table table-striped table-bordered table-condensed">

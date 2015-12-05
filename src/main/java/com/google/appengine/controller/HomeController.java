@@ -51,7 +51,7 @@ public class HomeController extends AbstractAppEngineAuthorizationCodeServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
 		List<Message> unreadEmails = new ArrayList<Message>();
 		List<Email> toStoreEmails = new ArrayList<Email>();
 		List<Email> translatedEmails = new ArrayList<Email>();
@@ -87,7 +87,7 @@ public class HomeController extends AbstractAppEngineAuthorizationCodeServlet {
 
 		try {
 			request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
-		} catch (ServletException e) {
+		} catch (ServletException | IOException e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
